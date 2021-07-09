@@ -38,18 +38,12 @@
         v-model="input"
       >
       <button
-        v-if="noNext"
         class="continue"
         :class="{ disabled }"
         :disabled="disabled"
-      >Continue ›</button>
-      <button
-        v-else
-        class="continue"
-        :class="{ disabled }"
-        :disabled="disabled"
-        @click="$router.push(nextLink)"
-      >Continue ›</button>
+      >
+        {{ disabled ? '未通过' : '通过' }}
+      </button>
     </div>
     <div
       class="solution"
@@ -58,7 +52,7 @@
       <slot></slot>
     </div>
     <div class="solution_hint">
-      解决上述任务以继续下一个问题，或者查看<a
+      查看<a
         class="show_solution_button"
         @click="showAnswer = !showAnswer"
       >答案</a>。
@@ -89,9 +83,6 @@ export default {
     };
   },
   computed: {
-    nextLink() {
-      return this.nextUrl || getDefauleNextUrl(this.$site, this.$page);
-    },
     hasGroup() {
       return this.data.some((item) => !!item.captureData);
     },
@@ -179,26 +170,6 @@ export default {
   },
 };
 
-function getDefauleNextUrl(site, page) {
-  const { sidebar } = site.themeConfig;
-  const { regularPath } = page;
-  let currentPath = regularPath.match(/^(.*).html$/)[1];
-  let nextPath = null;
-  sidebar.some((group) => {
-    return group.children.some((link, i) => {
-      if (link == currentPath) {
-        if (group.children[i + 1]) {
-          nextPath = group.children[i + 1] + ".html";
-        } else {
-          nextPath = "/" // 没有下一个链接，就跳回主页
-        }
-        return true;
-      }
-      return false;
-    });
-  });
-  return nextPath;
-}
 </script>
 
 <style lang="scss">

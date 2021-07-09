@@ -1,4 +1,4 @@
-# 课程 A4：贪婪 vs 懒惰
+# 贪婪 vs 懒惰
 
 当正则表达式中包含 `*`、`+`、`?` 等表示重复的元字符时，默认会匹配**尽可能多**的字符，这被称为**贪婪匹配**。例如给定字符串 `abcab`，模式 `a.*b` 会匹配最长的以 `a` 开始、以 `b` 结束的字符串，也就是匹配到整个字符串而不是 `ab`。
 
@@ -14,14 +14,12 @@
 在下面的练习中，请尝试修改模式 `(\d+)0*$`，捕获不包含 `0` 的数字前缀。
 
 <Exercise
-  title="练习 A4：懒惰匹配"
+  title="练习 1：懒惰匹配"
   :data='[
     {type: "capture", text: "123000", captureData: {results: ["123"]}},
     {type: "capture", text: "1010", captureData: {results: ["101"]}},
     {type: "capture", text: "789", captureData: {results: ["789"]}},
   ]'
 >
-
-默认情况下，正则表达式是贪婪匹配，所以 <SolutionLink text="\d+" /> 总是尽可能多地向后匹配，将后面的 `0` 也包含进来。将模式改为非贪婪匹配：<SolutionLink text="(\d+?)0*$" />，就可以让 `\d+` 尽可能少匹配，让 `0*` 尽可能多匹配。
-
+  <SolutionLink text="(\d+?)0*$" />
 </Exercise>
