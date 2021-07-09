@@ -1,7 +1,7 @@
 const { removePlugin, PLUGINS } = require('@vuepress/markdown')
 
 module.exports = {
-  base: "/",
+  base: "/regexone-cn/",
 
   title: "正则表达式",
   description: "正则表达式",
