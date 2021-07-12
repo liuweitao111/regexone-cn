@@ -9,6 +9,11 @@
       v-html="textHtml"
     />
     <td
+      v-if="hasNote"
+      class="note"
+      v-text="note"
+    />
+    <td
       v-if="hasGroup"
       class="groups"
     >
@@ -34,6 +39,7 @@ export default {
   props: {
     data: Object,
     hasGroup: Boolean,
+    hasNote: Boolean,
   },
   data() {
     return {
@@ -50,6 +56,9 @@ export default {
     },
     text() {
       return this.data.text;
+    },
+    note() {
+      return this.data.note;
     },
     captureData() {
       return this.data.captureData;

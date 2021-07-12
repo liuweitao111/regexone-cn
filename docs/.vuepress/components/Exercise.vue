@@ -11,6 +11,10 @@
             <td class="task">Task</td>
             <td class="text">Text</td>
             <td
+              v-if="hasNote"
+              class="note"
+            >Note</td>
+            <td
               v-if="hasGroup"
               class="groups"
             >Capture Groups</td>
@@ -20,6 +24,7 @@
             v-for="(item, index) in data"
             :key="index"
             :data="item"
+            :hasNote="hasNote"
             :hasGroup="hasGroup"
             ref="problems"
           />
@@ -85,6 +90,9 @@ export default {
   computed: {
     hasGroup() {
       return this.data.some((item) => !!item.captureData);
+    },
+    hasNote() {
+      return this.data.some((item) => !!item.note);
     },
   },
   watch: {

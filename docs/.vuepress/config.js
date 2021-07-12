@@ -12,21 +12,15 @@ module.exports = {
 
     sidebar: [
       {
-        title: "元字符",
+        title: "基础",
         children: [
-          "/character/character_classes",
-          "/character/quantifiers",
-          "/character/assertions",
-          "/character/character_ranges",
-          "/character/groups",
+          "/base/character_classes",
+          "/base/character_ranges",
+          "/base/quantifiers",
+          "/base/assertions",
+          "/base/groups",
+          "/base/escape",
         ],
-      },
-      {
-        title: "其他",
-        children: [
-          "/others/greeding",
-          "/others/escape",
-        ]
       },
       {
         title: "问题",
